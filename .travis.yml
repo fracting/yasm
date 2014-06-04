@@ -26,4 +26,8 @@ script:
   - export EXEEXT=.exe
   - export WINEDEBUG=-all
   - make check || true
-  - cat ./modules/arch/x86/tests/addbyte.asm  | ./yasm.exe -f bin -
+  - cat ./modules/arch/x86/tests/addbyte.asm  | ./yasm.exe -f bin - -o addbyte.tmp 2> addbyte.ew.txt
+  - cat addbyte.ew.txt
+  - sha1sum addbyte.ew.txt
+  - cat results/addbyte.ew
+  - sha1sum results/addbyte.ew
