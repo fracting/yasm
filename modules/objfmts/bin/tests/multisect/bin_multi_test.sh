@@ -35,7 +35,7 @@ do
     fi
 
     # Run within a subshell to prevent signal messages from displaying.
-    sh -c "cat ${asm} | ./yasm -f bin --mapfile=results/${m} -o results/${o} - 2>results/${e}" >/dev/null 2>/dev/null
+    sh -c "cat ${asm} | ./yasm${EXEEXT} -f bin --mapfile=results/${m} -o results/${o} - 2>results/${e}" >/dev/null 2>/dev/null
     status=$?
     if test $status -gt 128; then
         # We should never get a coredump!
@@ -70,7 +70,7 @@ do
             eval "failed$failedct='E: ${a} did not return an error code!'"
             failedct=`expr $failedct + 1`
         else
-            ./test_hd results/${o} > results/${oh}
+            ./test_hd${EXEEXT} results/${o} > results/${oh}
             if diff -w ${og} results/${oh} >/dev/null; then
                 if diff -w ${eg} results/${e} >/dev/null; then
                     if diff -w ${mg} results/${m} >/dev/null; then
