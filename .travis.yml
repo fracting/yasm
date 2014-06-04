@@ -23,6 +23,7 @@ script:
   - ./autogen.sh --host=i686-w64-mingw32
   - make
   - sudo update-binfmts --enable wine
+  - wineboot
   - export EXEEXT=.exe
   - export WINEDEBUG=-all
   - make check || true
