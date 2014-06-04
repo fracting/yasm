@@ -18,6 +18,8 @@ compiler:
   - gcc
 
 script:
+  - sudo update-binfmts --disable wine
   - ./autogen.sh --host=i686-w64-mingw32
   - make
+  - sudo update-binfmts --enable wine
   - export EXEEXT=.exe && make check
