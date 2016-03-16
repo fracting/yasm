@@ -9,4 +9,5 @@ build:
 matrix:
   platform:
     - bash
+    - msys32
     - mingw32
