@@ -3,6 +3,7 @@ build:
   pull: true
   shell: $$platform
   commands:
+    - export platform=$$platform
     - ./ci-build.sh
 
 matrix:
